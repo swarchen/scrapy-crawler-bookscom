@@ -13,7 +13,7 @@ BOT_NAME = 'bookcom'
 
 SPIDER_MODULES = ['bookcom.spiders']
 NEWSPIDER_MODULE = 'bookcom.spiders'
-LOG_ENABLED = False
+LOG_ENABLED = True
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -25,7 +25,7 @@ CONCURRENT_REQUESTS=32
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY=3
+DOWNLOAD_DELAY=0.25
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN=16
 #CONCURRENT_REQUESTS_PER_IP=16
@@ -53,6 +53,11 @@ CONCURRENT_REQUESTS_PER_DOMAIN=16
 #DOWNLOADER_MIDDLEWARES = {
 #    'bookcom.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
+
+DOWNLOADER_MIDDLEWARES = {
+        'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware' : None,
+        'bookcom.spiders.rotate_useragent.RotateUserAgentMiddleware' :400
+    }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
