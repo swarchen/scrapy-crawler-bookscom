@@ -20,14 +20,14 @@ LOG_ENABLED = True
 #USER_AGENT = 'bookcom (+http://www.yourdomain.com)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS=32
+CONCURRENT_REQUESTS=100
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY=0.25
+DOWNLOAD_DELAY=0.5
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN=16
+CONCURRENT_REQUESTS_PER_DOMAIN=100
 #CONCURRENT_REQUESTS_PER_IP=16
 
 # Disable cookies (enabled by default)
@@ -55,9 +55,9 @@ CONCURRENT_REQUESTS_PER_DOMAIN=16
 #}
 
 DOWNLOADER_MIDDLEWARES = {
-        'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware' : None,
-        'bookcom.spiders.rotate_useragent.RotateUserAgentMiddleware' :400
-    }
+	'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware' : None,
+	'bookcom.spiders.rotate_useragent.RotateUserAgentMiddleware' :400
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
