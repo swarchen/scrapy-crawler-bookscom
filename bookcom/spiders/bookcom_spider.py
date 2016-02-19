@@ -16,6 +16,6 @@ class BookcomSpider(scrapy.Spider):
         item['author'] = response.xpath('//li[@itemprop="author"]/a/text()').extract()
         item['category'] = response.xpath('//body/ul/li[3]/a/span/text()').extract()
         item['publisher'] = response.xpath('//span[@itemprop="brand"]/text()').extract()
-        item['pages'] = response.xpath('//div[@class="bd"]/ul/li[3]/text()').extract()
+        item['pages'] = response.xpath('//div[@class="bd"]/ul/li/text()').extract()
         item['imgUrl'] = response.xpath('//img[@itemprop="image"]/@src').re('(.*?)&v')
         yield item
